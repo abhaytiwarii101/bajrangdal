@@ -455,7 +455,7 @@ select{
             <option>गिधा</option>
             <option>कररिया</option>
             <option>कोइलादेवा</option>
-            <option>मझिरवा कलां</option>
+            <option>मजीरवां कलां</option>
             <option>मंझा गोसाई</option>
             <option>पैकौली बदो</option>
           </select>
@@ -511,7 +511,7 @@ select{
         <div class="submit-container">
           <div class="share-instruction">ये फॉर्म WhatsApp पर शेयर होगा</div>
           <button type="submit" class="submit-btn" id="submitBtn">
-            सबमिट
+            Submit
           </button>
         </div>
 
@@ -570,12 +570,12 @@ form.addEventListener("submit", function(e){
 
   /* Button loading */
   submitBtn.disabled = true;
-  submitBtn.innerHTML = "⏳ WhatsApp खोला जा रहा है...";
+  submitBtn.innerHTML = "⏳ Opening WhatsApp...";
 
   const message =
-`🚩 जय श्री राम 🚩
+`*🚩 जय श्री राम 🚩*
 
-अभय जी,
+*${name}* जी,
 
 मैं ${name}, पिता का नाम ${father},
 पंचायत — ${panchayat},
@@ -588,9 +588,9 @@ form.addEventListener("submit", function(e){
 🆔 आधार नंबर: ${aadhaarNo}
 🏠 पूरा पता: ${address}
 
-मैं बजरंग दल से जुड़ना चाहता हूँ ताकि अपने समाज में जागरूकता फैला सकूँ।
+*मैं बजरंग दल से जुड़ना चाहता हूँ ताकि अपने समाज में जागरूकता फैला सकूँ।*
 
-🚩 जय श्री राम 🚩`;
+_*🚩 जय श्री राम 🚩*_`;
 
   const whatsappNumber = "917320064400";
 
@@ -609,5 +609,4 @@ form.addEventListener("submit", function(e){
 </script>
 
 </body>
-      </html>
-      
+</html>

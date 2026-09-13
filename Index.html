@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>बजरंग दल सदस्यता आवेदन</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --saffron:#e87519;
+  --deep:#8d2419;
+  --cream:#fff8ee;
+  --text:#33231d;
+  --muted:#796a62;
+  --border:#ead8ca;
+}
+
+body{
+  font-family:"Noto Sans Devanagari",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(232,117,25,.12),transparent 28%),
+    radial-gradient(circle at 90% 90%,rgba(141,36,25,.08),transparent 30%),
+    var(--cream);
+  min-height:100vh;
+  padding:20px;
+  overflow-x:hidden;
+}
+
+/* Background animation */
+body::before{
+  content:"";
+  position:fixed;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:rgba(232,117,25,.06);
+  filter:blur(50px);
+  top:-160px;
+  right:-140px;
+  animation:float 8s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes float{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(-35px,30px)}
+}
+
+.container{
+  width:100%;
+  max-width:850px;
+  margin:auto;
+}
+
+/* Banner */
+.banner{
+  width:100%;
+  display:block;
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(80,35,20,.15);
+  animation:bannerIn .8s ease both;
+}
+
+@keyframes bannerIn{
+  from{
+    opacity:0;
+    transform:translateY(-20px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* Heading */
+.heading{
+  text-align:center;
+  margin:25px 0 18px;
+  animation:fadeUp .8s .15s ease both;
+}
+
+.heading h1{
+  font-size:27px;
+  font-weight:800;
+  color:var(--deep);
+}
+
+.heading p{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* Form card */
+.form-card{
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(234,216,202,.9);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 18px 50px rgba(73,37,22,.10);
+  backdrop-filter:blur(10px);
+  animation:cardIn .8s .25s ease both;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.field{
+  animation:fieldIn .6s ease both;
+}
+
+@keyframes fieldIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.required{
+  color:#c42b1b;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid var(--border);
+  background:#fffdfb;
+  border-radius:12px;
+  padding:13px 14px;
+  font-family:inherit;
+  font-size:14px;
+  color:var(--text);
+  outline:none;
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    transform .2s ease,
+    background .25s ease;
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:#a69a92;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--saffron);
+  background:white;
+  box-shadow:0 0 0 4px rgba(232,117,25,.10);
+  transform:translateY(-1px);
+}
+
+select{
+  cursor:pointer;
+}
+
+/* Aadhaar notice */
+.notice{
+  grid-column:1/-1;
+  padding:12px 14px;
+  border-radius:12px;
+  background:#fff6e9;
+  border:1px solid #f1d7b4;
+  color:#714b2f;
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* Button wrapper and instruction */
+.submit-container {
+  grid-column: 1/-1;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.share-instruction {
+  font-size: 13px;
+  color: var(--deep);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Button */
+.submit-btn{
+  width: 100%;
+  border:0;
+  border-radius:14px;
+  padding:15px 20px;
+  background:linear-gradient(135deg,#e87519,#b43a20);
+  color:white;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(180,58,32,.22);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.submit-btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:70%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+  transform:skewX(-20deg);
+}
+
+.submit-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(180,58,32,.28);
+}
+
+.submit-btn:hover::after{
+  animation:shine .8s ease;
+}
+
+.submit-btn:active{
+  transform:translateY(0) scale(.98);
+}
+
+@keyframes shine{
+  from{left:-120%}
+  to{left:150%}
+}
+
+.small-note{
+  grid-column:1/-1;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:-5px;
+}
+
+/* Mobile */
+@media(max-width:650px){
+  body{
+    padding:10px;
+  }
+
+  .banner{
+    border-radius:14px;
+  }
+
+  .heading{
+    margin:20px 0 14px;
+  }
+
+  .heading h1{
+    font-size:22px;
+  }
+
+  .heading p{
+    font-size:12px;
+  }
+
+  .form-card{
+    padding:18px 15px;
+    border-radius:18px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .field.full,
+  .notice,
+  .submit-container,
+  .small-note{
+    grid-column:auto;
+  }
+
+  input,
+  select,
+  textarea{
+    padding:13px;
+  }
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Banner -->
+  <img src="bajrangdal.JPG"
+       alt="बजरंग दल"
+       class="banner">
+
+  <div class="heading">
+    <h1>🚩 बजरंग दल सदस्यता आवेदन</h1>
+    <p>फुलवरिया प्रखंड, गोपालगंज, बिहार</p>
+  </div>
+
+  <div class="form-card">
+
+    <form id="membershipForm">
+
+      <div class="form-grid">
+
+        <!-- Name -->
+        <div class="field">
+          <label>
+            पूरा नाम <span class="required">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            placeholder="अपना पूरा नाम लिखें"
+            required>
+        </div>
+
+        <!-- Father -->
+        <div class="field">
+          <label>
+            पिता का नाम <span class="required">*</span>
+          </label>
+          <input
+            type="text"
+            id="father"
+            placeholder="पिता का नाम लिखें"
+            required>
+        </div>
+
+        <!-- Mobile -->
+        <div class="field">
+          <label>
+            मोबाइल नंबर <span class="required">*</span>
+          </label>
+          <input
+            type="tel"
+            id="mobile"
+            placeholder="10 अंकों का मोबाइल नंबर"
+            inputmode="numeric"
+            maxlength="10"
+            required>
+        </div>
+
+        <!-- Gmail -->
+        <div class="field">
+          <label>
+            Gmail <span class="required">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="example@gmail.com"
+            required>
+        </div>
+
+        <!-- Block -->
+        <div class="field">
+          <label>
+            प्रखंड <span class="required">*</span>
+          </label>
+          <select id="block" required>
+            <option value="फुलवरिया" selected>फुलवरिया</option>
+          </select>
+        </div>
+
+        <!-- Panchayat -->
+        <div class="field">
+          <label>
+            पंचायत <span class="required">*</span>
+          </label>
+          <select id="panchayat" required>
+            <option value="">पंचायत चुनें</option>
+            <option>बैरागी टोला</option>
+            <option>बथुआ बाजार</option>
+            <option>चमारी पट्टी</option>
+            <option>चुरामन चक</option>
+            <option>फुलवरिया</option>
+            <option>गणेश डुमर</option>
+            <option>गिधा</option>
+            <option>कररिया</option>
+            <option>कोइलादेवा</option>
+            <option>मझिरवा कलां</option>
+            <option>मंझा गोसाई</option>
+            <option>पैकौली बदो</option>
+          </select>
+        </div>
+
+        <!-- Village -->
+        <div class="field">
+          <label>
+            गांव <span class="required">*</span>
+          </label>
+          <input
+            type="text"
+            id="village"
+            placeholder="अपने गांव का नाम"
+            required>
+        </div>
+
+        <!-- Aadhaar -->
+        <div class="field">
+          <label>
+            आधार नंबर <span class="required">*</span>
+          </label>
+          <input
+            type="text"
+            id="aadhaar"
+            placeholder="12 अंकों का आधार नंबर"
+            inputmode="numeric"
+            maxlength="12"
+            required>
+        </div>
+
+        <!-- Address -->
+        <div class="field full">
+          <label>
+            पूरा पता <span class="required">*</span>
+          </label>
+          <textarea
+            id="address"
+            placeholder="मोहल्ला/टोला, गांव आदि पूरा पता"
+            required></textarea>
+        </div>
+
+        <!-- Notice -->
+        <div class="notice">
+          🔒 आधार नंबर सुरक्षा के लिए लिया जा रहा है, इसका कोई गलत उपयोग नहीं किया जाएगा।
+        </div>
+
+        <div class="small-note">
+          सभी (*) वाले विवरण भरना आवश्यक है।
+        </div>
+
+        <!-- Submit Container -->
+        <div class="submit-container">
+          <div class="share-instruction">ये फॉर्म WhatsApp पर शेयर होगा</div>
+          <button type="submit" class="submit-btn" id="submitBtn">
+            सबमिट
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("membershipForm");
+const mobile = document.getElementById("mobile");
+const aadhaar = document.getElementById("aadhaar");
+const submitBtn = document.getElementById("submitBtn");
+
+/* केवल नंबर */
+mobile.addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g,"").slice(0,10);
+});
+
+aadhaar.addEventListener("input", function(){
+  this.value = this.value.replace(/\D/g,"").slice(0,12);
+});
+
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const father = document.getElementById("father").value.trim();
+  const phone = mobile.value.trim();
+  const email = document.getElementById("email").value.trim();
+  const block = document.getElementById("block").value;
+  const panchayat = document.getElementById("panchayat").value;
+  const village = document.getElementById("village").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const aadhaarNo = aadhaar.value.trim();
+
+  /* Mobile validation */
+  if(!/^[6-9]\d{9}$/.test(phone)){
+    alert("कृपया सही 10 अंकों का मोबाइल नंबर डालें।");
+    mobile.focus();
+    return;
+  }
+
+  /* Aadhaar validation */
+  if(!/^\d{12}$/.test(aadhaarNo)){
+    alert("कृपया सही 12 अंकों का आधार नंबर डालें।");
+    aadhaar.focus();
+    return;
+  }
+
+  /* Button loading */
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = "⏳ WhatsApp खोला जा रहा है...";
+
+  const message =
+`🚩 जय श्री राम 🚩
+
+अभय जी,
+
+मैं ${name}, पिता का नाम ${father},
+पंचायत — ${panchayat},
+गांव — ${village},
+प्रखंड — ${block},
+जिला — गोपालगंज, बिहार।
+
+📱 मोबाइल नंबर: ${phone}
+📧 Gmail: ${email}
+🆔 आधार नंबर: ${aadhaarNo}
+🏠 पूरा पता: ${address}
+
+मैं बजरंग दल से जुड़ना चाहता हूँ ताकि अपने समाज में जागरूकता फैला सकूँ।
+
+🚩 जय श्री राम 🚩`;
+
+  const whatsappNumber = "917320064400";
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+  setTimeout(function(){
+    window.location.href = whatsappURL;
+  },500);
+
+});
+
+</script>
+
+</body>
+      </html>
+      
